@@ -9,7 +9,7 @@
 	li $v0, 8        
 	la $a0, input
 	li $a1, 50
-	move $s7, $a1 #save the string to $s7
+	move $t8, $a1 #save the string to $s7
 	sb $s7, inputSaved
 	syscall
 	
@@ -166,10 +166,15 @@
 	li $v0, 10
 	syscall
 	
+	jal findLength
 .globl findLength
 findLength:
-	subu $sp,$sp,54 #50 for the .space, and 4 for the length of the string
+	subu $sp,$sp,56 #50 for the .space, and 4 for the length of the string
 	sw $ra, ($sp) #store return address
-	sw $s0, 4($sp) # store word at the the first index
+	sb $t7, 0($sp) #store the byte to the first position in the stack
 	
+	lb $s0, 0($sp)
+	addi $sp, $sp, 4
+	
+	jr $ra
 	 	

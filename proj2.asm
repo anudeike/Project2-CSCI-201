@@ -122,7 +122,7 @@
 	beq $s0, $s5, one
 
 	cubed:
-	li $s6, 39304
+	li $s6, 32768
 	mult $s4, $s6
 	mflo $s7 # take from the lo -> s7 regsiter because of overfollow 
 	add $t7, $t7, $s7

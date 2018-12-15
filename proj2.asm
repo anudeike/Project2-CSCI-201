@@ -166,6 +166,7 @@
 	li $v0, 10
 	syscall
 	
+	
 	jal findLength
 .globl findLength
 findLength:
@@ -173,7 +174,7 @@ findLength:
 	sw $ra, ($sp) #store return address
 	sb $t7, 0($sp) #store the byte to the first position in the stack
 	
-	lb $s0, 0($sp)
+	lb $s0, 0($sp) #load it again
 	addi $sp, $sp, 4
 	
 	jr $ra

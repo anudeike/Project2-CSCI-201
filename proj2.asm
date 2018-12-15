@@ -3,11 +3,14 @@
     lenErr: .asciiz "Input is too long."
     baseErr:   .asciiz "Invalid base-32 number."
     input:		.space 50
+    inputSaved: .space 50
 .text
     main:
 	li $v0, 8        
 	la $a0, input
 	li $a1, 50
+	move $s7, $a1 #save the string to $s7
+	sb $s7, inputSaved
 	syscall
 	
 	removeLeading:  #Remove leading spaces
@@ -169,5 +172,4 @@ findLength:
 	sw $ra, ($sp) #store return address
 	sw $s0, 4($sp) # store word at the the first index
 	
-	g
-	
+	 	

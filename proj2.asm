@@ -162,3 +162,12 @@
 	exit:
 	li $v0, 10
 	syscall
+	
+.globl findLength
+findLength:
+	subu $sp,$sp,54 #50 for the .space, and 4 for the length of the string
+	sw $ra, ($sp) #store return address
+	sw $s0, 4($sp) # store word at the the first index
+	
+	g
+	

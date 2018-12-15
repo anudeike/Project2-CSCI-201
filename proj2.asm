@@ -64,13 +64,13 @@
 	bne $t6, $zero, Increment
 	slti $t6, $t5, 65    #Check if the char is less than 65->A not valid
 	bne $t6, $zero, baseError
-	slti $t6, $t5, 89    #Check if the char is less than 89->Y
+	slti $t6, $t5, 86    #Check if the char is less than 89->Y
 	bne $t6, $zero, Increment
 	slti $t6, $t5, 97    #Check if the char is less than 97->a not valid
 	bne $t6, $zero, baseError
-	slti $t6, $t5, 121   #Check if the char is less than 121->y 
+	slti $t6, $t5, 118   #Check if the char is less than 121->y 
 	bne $t6, $zero, Increment
-	bgt $t5, 120, baseError   #Check if the char is greater than 120->x not valid
+	bgt $t5, 117, baseError   #Check if the char is greater than 120->x not valid
 
 	Increment:
 	addi $a0, $a0, 1
@@ -131,7 +131,7 @@
 	j convertString
 
 	squared:
-	li $s6, 1156
+	li $s6, 1024
 	mult $s4, $s6
 	mflo $s7
 	add $t7, $t7, $s7
